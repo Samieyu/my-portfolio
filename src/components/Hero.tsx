@@ -41,9 +41,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
               </p>
             </div>
 
-            {/* Narrative Intro */}
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              {personalInfo.shortBio}
+            {/* Concise Teaser */}
+            <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              Software Engineering student at <strong className="text-white">Wachemo University</strong> & <strong className="text-cyan-300">INSA Cyber Talent Alum</strong>. Building secure software, mobile applications, and defensive/offensive security labs.
             </p>
 
             {/* Core Competency Tags */}

@@ -4,6 +4,11 @@ import { cyberTracks, projectsData } from '../data/portfolioData';
 
 export const CybersecuritySection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'roadmap' | 'soc-labs' | 'tools'>('roadmap');
+  const [expandedTracks, setExpandedTracks] = useState<Record<string, boolean>>({});
+
+  const toggleTrack = (stage: string) => {
+    setExpandedTracks(prev => ({ ...prev, [stage]: !prev[stage] }));
+  };
 
   const aiProject = projectsData.find(p => p.id === 'ai-pentest-copilot');
   const ctfProject = projectsData.find(p => p.id === 'lucy-ctf');
@@ -71,55 +76,72 @@ export const CybersecuritySection: React.FC = () => {
         {activeTab === 'roadmap' && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {cyberTracks.map((track, idx) => (
-                <div
-                  key={track.stage}
-                  className="p-5 rounded-xl bg-[#0a101d] border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono font-bold text-cyan-400">{track.stage}</span>
-                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
-                        track.status === 'Active Learning'
-                          ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30'
-                          : track.status === 'Hands-on Labs'
-                          ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/30'
-                          : 'bg-purple-950/80 text-purple-300 border-purple-500/30'
-                      }`}>
-                        {track.status}
-                      </span>
+              {cyberTracks.map((track) => {
+                const isExpanded = expandedTracks[track.stage];
+
+                return (
+                  <div
+                    key={track.stage}
+                    className="p-5 rounded-xl bg-[#0a101d] border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-mono font-bold text-cyan-400">{track.stage}</span>
+                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                          track.status === 'Active Learning'
+                            ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30'
+                            : track.status === 'Hands-on Labs'
+                            ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/30'
+                            : 'bg-purple-950/80 text-purple-300 border-purple-500/30'
+                        }`}>
+                          {track.status}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base font-bold text-white tracking-wide">
+                        {track.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">
+                        {track.description}
+                      </p>
+
+                      {/* Expandable Core Focus */}
+                      {isExpanded && (
+                        <div className="space-y-1 pt-2 border-t border-slate-800/80 animate-in fade-in duration-200">
+                          <div className="text-[11px] font-mono text-slate-300 font-semibold">Core Focus:</div>
+                          <ul className="space-y-1">
+                            {track.keyTopics.map((topic) => (
+                              <li key={topic} className="flex items-center gap-1.5 text-[11px] text-slate-400">
+                                <ChevronRight className="w-3 h-3 text-cyan-400 flex-shrink-0" />
+                                <span>{topic}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
 
-                    <h3 className="text-base font-bold text-white tracking-wide">
-                      {track.title}
-                    </h3>
+                    <div className="pt-3 mt-3 border-t border-slate-800 flex flex-col gap-2">
+                      <button
+                        onClick={() => toggleTrack(track.stage)}
+                        className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 flex items-center justify-between w-full"
+                      >
+                        <span>{isExpanded ? 'Hide Topics -' : 'View Topics +'}</span>
+                        <ChevronRight className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                      </button>
 
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      {track.description}
-                    </p>
-
-                    <div className="space-y-1 pt-2 border-t border-slate-800/80">
-                      <div className="text-[11px] font-mono text-slate-300 font-semibold">Core Focus:</div>
-                      <ul className="space-y-1">
-                        {track.keyTopics.map((topic) => (
-                          <li key={topic} className="flex items-center gap-1.5 text-[11px] text-slate-400">
-                            <ChevronRight className="w-3 h-3 text-cyan-400 flex-shrink-0" />
-                            <span>{topic}</span>
-                          </li>
+                      <div className="flex flex-wrap gap-1">
+                        {track.tools.slice(0, 3).map((tool) => (
+                          <span key={tool} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#0d1424] text-slate-300 border border-slate-800">
+                            {tool}
+                          </span>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   </div>
-
-                  <div className="pt-4 mt-4 border-t border-slate-800 flex flex-wrap gap-1">
-                    {track.tools.map((tool) => (
-                      <span key={tool} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#0d1424] text-slate-300 border border-slate-800">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Disclaimer pill */}

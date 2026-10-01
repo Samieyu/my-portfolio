@@ -1,10 +1,13 @@
-import React from 'react';
-import { Palette, Music, Sparkles, ExternalLink, Github, Heart, Play, Sliders } from 'lucide-react';
+import React, { useState } from 'react';
+import { Palette, Music, ExternalLink, Github, ChevronRight, Volume2 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export const CreativeSection: React.FC = () => {
+  const [showMusicStory, setShowMusicStory] = useState(false);
+  const [showDesignStory, setShowDesignStory] = useState(false);
+
   return (
-    <section id="creative" className="py-24 relative bg-[#070b14] border-t border-slate-800/80">
+    <section id="creative" className="py-20 relative bg-[#070b14] border-t border-slate-800/80">
       
       {/* Background glow */}
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
@@ -12,134 +15,143 @@ export const CreativeSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-purple-950/80 text-purple-300 border border-purple-500/30">
             <Palette className="w-3.5 h-3.5 text-purple-400" />
-            <span>07 // CREATIVE PROFILE & ARTS</span>
+            <span>07 // CREATIVE PROFILE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Design, Visual Arts & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Musicianship</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Design & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Musicianship</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base font-normal">
-            Balancing software engineering discipline with 6+ years of piano performance, community mentorship, and visual graphic design.
+          <p className="text-slate-400 text-xs sm:text-sm font-normal">
+            6+ years playing church piano, beginner piano teaching, and visual media branding.
           </p>
         </div>
 
         {/* Two-Column Creative Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto items-start">
           
-          {/* Card 1: Music, Piano & Church Pedagogy */}
-          <div className="p-8 rounded-2xl bg-[#0a101d] border border-purple-500/20 hover:border-purple-500/40 transition-all flex flex-col justify-between shadow-xl space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400">
-                  <Music className="w-6 h-6" />
+          {/* Card 1: Music & Piano */}
+          <div className="p-6 rounded-2xl bg-[#0a101d] border border-purple-500/20 hover:border-purple-500/40 transition-all shadow-xl space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400">
+                  <Music className="w-5 h-5" />
                 </div>
-                <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#0d1424] text-purple-300 border border-purple-500/30">
-                  6+ Years Playing
+                <div>
+                  <h3 className="text-base font-bold text-white font-mono">
+                    Piano & Choral Keyboard
+                  </h3>
+                  <p className="text-[11px] text-purple-300 font-mono">
+                    6+ Years Playing • Penuel MKC Church
+                  </p>
+                </div>
+              </div>
+
+              {/* Animated Audio Equalizer Effect */}
+              <div className="flex items-end gap-1 h-5 px-2 py-1 rounded bg-[#0d1424] border border-slate-800">
+                <span className="w-1 h-3 bg-purple-400 rounded-full animate-pulse" />
+                <span className="w-1 h-5 bg-pink-400 rounded-full animate-pulse delay-75" />
+                <span className="w-1 h-2 bg-cyan-400 rounded-full animate-pulse delay-150" />
+                <span className="w-1 h-4 bg-purple-400 rounded-full animate-pulse delay-100" />
+              </div>
+            </div>
+
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Playing keyboard in church services, choir arrangements, and mentoring children in beginner piano fundamentals and musical scales.
+            </p>
+
+            {/* Expandable Story */}
+            {showMusicStory && (
+              <div className="p-3 rounded-xl bg-[#0d1424] border border-purple-500/20 text-xs text-slate-300 space-y-2 animate-in fade-in duration-200">
+                <p>
+                  Music teaches structured rhythm, harmonic intuition, and deep patience—qualities that directly shape how I architect clean, disciplined code.
+                </p>
+                <div className="text-[11px] text-purple-300 italic font-mono">
+                  "Software engineering is architecture; music is flow."
+                </div>
+              </div>
+            )}
+
+            {/* Musical pills */}
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {['Church Keyboard', 'Piano Mentorship', 'Scales & Theory', 'Songwriting'].map((m) => (
+                <span key={m} className="px-2 py-0.5 text-[10px] font-mono rounded bg-[#0d1424] text-slate-300 border border-slate-800">
+                  {m}
                 </span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-white">
-                  Piano Performance & Choral Direction
-                </h3>
-                <p className="text-xs font-mono text-purple-300/80 mt-1">
-                  Keyboardist • Beginner Piano Teacher • Music Theory
-                </p>
-              </div>
-
-              <div className="text-slate-300 text-sm leading-relaxed space-y-3">
-                <p>
-                  I have been playing keyboard and piano for over six years, serving regularly in church worship services, youth gatherings, and choir rehearsals.
-                </p>
-                <p>
-                  As an educator, I mentor children and beginners in fundamental piano technique, scales, ear training, and harmonic structure. Music teaches structured rhythm and deep focus—qualities that directly influence how I architect clean, disciplined software.
-                </p>
-              </div>
-
-              {/* Musical skills pill */}
-              <div className="pt-2 border-t border-slate-800 space-y-2">
-                <span className="text-xs font-mono text-slate-400 font-semibold">Musical Horizons:</span>
-                <div className="flex flex-wrap gap-2">
-                  {['Church Keyboard', 'Beginner Piano Teaching', 'Scales & Modes', 'Songwriting & Arrangement', 'Bass Guitar (In Learning)'].map((m) => (
-                    <span key={m} className="px-2.5 py-1 text-xs font-mono rounded-lg bg-[#0d1424] text-slate-300 border border-slate-800">
-                      {m}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Quote box */}
-            <div className="p-4 rounded-xl bg-[#0d1424] border border-purple-500/20 text-xs font-mono text-slate-300 italic">
-              "Software engineering is architecture; music is flow. The discipline of playing keyboard and understanding harmony enriches how I approach problem solving in code."
-            </div>
+            <button
+              onClick={() => setShowMusicStory(!showMusicStory)}
+              className="pt-2 text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1 transition-colors"
+            >
+              <span>{showMusicStory ? 'Hide Narrative -' : 'Read Musical Mindset +'}</span>
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform ${showMusicStory ? 'rotate-90' : ''}`} />
+            </button>
           </div>
 
-          {/* Card 2: Graphic Design & Digital Media */}
-          <div className="p-8 rounded-2xl bg-[#0a101d] border border-cyan-500/20 hover:border-cyan-500/40 transition-all flex flex-col justify-between shadow-xl space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
-                  <Palette className="w-6 h-6" />
+          {/* Card 2: Graphic Design */}
+          <div className="p-6 rounded-2xl bg-[#0a101d] border border-cyan-500/20 hover:border-cyan-500/40 transition-all shadow-xl space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+                  <Palette className="w-5 h-5" />
                 </div>
-                <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#0d1424] text-cyan-300 border border-cyan-500/30">
-                  Adobe Creative Suite
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-white">
-                  Visual Branding & Digital Media
-                </h3>
-                <p className="text-xs font-mono text-cyan-300/80 mt-1">
-                  Photoshop • Illustrator • InDesign • Canva • Church Media
-                </p>
-              </div>
-
-              <div className="text-slate-300 text-sm leading-relaxed space-y-3">
-                <p>
-                  My visual creativity spans brand identity, event posters, church media graphics, and digital content creation. I focus on clean composition, balanced typography, and meaningful visual storytelling.
-                </p>
-                <p>
-                  Explore my dedicated graphic design portfolio website to view promotional flyers, church projection slides, and digital layout designs.
-                </p>
-              </div>
-
-              {/* Design Tooling pills */}
-              <div className="pt-2 border-t border-slate-800 space-y-2">
-                <span className="text-xs font-mono text-slate-400 font-semibold">Design Toolset:</span>
-                <div className="flex flex-wrap gap-2">
-                  {['Adobe Photoshop', 'Adobe Illustrator', 'Adobe InDesign', 'Canva Pro', 'Typography', 'Church Media'].map((t) => (
-                    <span key={t} className="px-2.5 py-1 text-xs font-mono rounded-lg bg-[#0d1424] text-slate-300 border border-slate-800">
-                      {t}
-                    </span>
-                  ))}
+                <div>
+                  <h3 className="text-base font-bold text-white font-mono">
+                    Visual Branding & Media Arts
+                  </h3>
+                  <p className="text-[11px] text-cyan-300 font-mono">
+                    Photoshop • Illustrator • InDesign • Canva
+                  </p>
                 </div>
               </div>
+
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/30">
+                Adobe Suite
+              </span>
             </div>
 
-            {/* Direct Links to Live Graphic Portfolio */}
-            <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center gap-3">
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Designing sermon visual slides, church event posters, digital graphics, and promotional identity systems with clean typography.
+            </p>
+
+            {/* Expandable Story */}
+            {showDesignStory && (
+              <div className="p-3 rounded-xl bg-[#0d1424] border border-cyan-500/20 text-xs text-slate-300 space-y-2 animate-in fade-in duration-200">
+                <p>
+                  Experience producing high-resolution projection media, sermon typography layouts, and church community flyers with balanced color theory and composition.
+                </p>
+              </div>
+            )}
+
+            {/* Design pills */}
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {['Photoshop', 'Illustrator', 'InDesign', 'Canva', 'Event Media'].map((t) => (
+                <span key={t} className="px-2 py-0.5 text-[10px] font-mono rounded bg-[#0d1424] text-slate-300 border border-slate-800">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="pt-2 flex items-center justify-between flex-wrap gap-2">
+              <button
+                onClick={() => setShowDesignStory(!showDesignStory)}
+                className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+              >
+                <span>{showDesignStory ? 'Hide Narrative -' : 'Read Design Background +'}</span>
+                <ChevronRight className={`w-3.5 h-3.5 transition-transform ${showDesignStory ? 'rotate-90' : ''}`} />
+              </button>
+
               <a
                 href={personalInfo.creativePortfolioUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-xs font-mono shadow-md hover:shadow-purple-500/20 transition-all"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-xs font-mono shadow-sm hover:shadow-purple-500/30 transition-all"
               >
-                <span>View Live Graphic Portfolio</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
-
-              <a
-                href={personalInfo.creativeGithub}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0d1424] text-slate-300 border border-slate-800 hover:border-purple-400 text-xs font-mono transition-all"
-              >
-                <Github className="w-4 h-4" />
-                <span>Graphic Repo</span>
+                <span>Live Design Portfolio</span>
+                <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>

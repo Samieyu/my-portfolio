@@ -103,24 +103,14 @@ export const ProjectsSection: React.FC = () => {
                   )}
                 </div>
 
-                {/* Description */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                {/* Description - Brief 2 lines */}
+                <p className="text-slate-300 text-xs leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
 
-                {/* Key Features preview */}
-                <div className="space-y-1.5 pt-2 border-t border-slate-800/80">
-                  {project.keyFeatures.slice(0, 3).map((feat, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-slate-400">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span className="line-clamp-1">{feat}</span>
-                    </div>
-                  ))}
-                </div>
-
                 {/* Tech Badges */}
-                <div className="pt-2 flex flex-wrap gap-1.5">
-                  {project.techStack.map((tech) => (
+                <div className="pt-1 flex flex-wrap gap-1.5">
+                  {project.techStack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-0.5 text-[10px] font-mono rounded bg-[#0d1424] text-slate-300 border border-slate-800"
@@ -128,6 +118,11 @@ export const ProjectsSection: React.FC = () => {
                       {tech}
                     </span>
                   ))}
+                  {project.techStack.length > 4 && (
+                    <span className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-[#0d1424] text-cyan-400 border border-slate-800">
+                      +{project.techStack.length - 4}
+                    </span>
+                  )}
                 </div>
               </div>
 
