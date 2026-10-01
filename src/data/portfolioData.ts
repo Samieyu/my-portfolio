@@ -24,7 +24,8 @@ Parallel to my cybersecurity journey, I develop full-stack web applications and 
   creativePortfolioUrl: "https://scintillating-mooncake-34adbd.netlify.app/",
   creativeGithub: "https://github.com/Samieyu/Portfolio",
   profileImage: "/assets/samuel.jpg",
-  cvPath: "/assets/Samuel_Woldemeskel_CV.pdf"
+  cvPath: "/assets/Samuel_Woldemeskel_CV.pdf",
+  cvGoogleDocsUrl: "https://docs.google.com/document/d/1BJRSYe82I_h51dtnVEc7VJIdJB2L94ai-4rHLOxYxcg/edit?usp=sharing"
 };
 
 export const careerVision = {

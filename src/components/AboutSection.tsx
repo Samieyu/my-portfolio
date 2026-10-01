@@ -59,21 +59,30 @@ export const AboutSection: React.FC = () => {
                 ))}
               </div>
 
-              {/* CV Download / Contact CTA */}
+              {/* CV Download & Google Docs Links */}
               <div className="pt-4 flex flex-wrap items-center gap-3">
                 <a
                   href={personalInfo.cvPath}
-                  download
+                  download="Samuel_Woldemeskel_CV.pdf"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold font-mono bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all"
                 >
                   <FileText className="w-4 h-4 text-cyan-400" />
-                  <span>Download Curriculum Vitae (CV)</span>
+                  <span>Download CV (PDF)</span>
+                </a>
+                <a
+                  href={personalInfo.cvGoogleDocsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-semibold font-mono bg-[#0d1424] border border-slate-700 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-all"
+                >
+                  <span>View in Google Docs</span>
+                  <Compass className="w-3.5 h-3.5 text-cyan-400" />
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-semibold font-mono text-slate-300 hover:text-cyan-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-semibold font-mono text-slate-400 hover:text-cyan-300 transition-colors ml-auto sm:ml-0"
                 >
-                  <span>Connect with me &rarr;</span>
+                  <span>Connect &rarr;</span>
                 </a>
               </div>
             </div>

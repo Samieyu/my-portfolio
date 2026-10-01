@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, Terminal, Menu, X, Download, ExternalLink, Code2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Shield, Terminal, Menu, X, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -78,7 +78,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
           </div>
 
           {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* CV Download / View */}
+            <a
+              href={personalInfo.cvPath}
+              download="Samuel_Woldemeskel_CV.pdf"
+              className="flex items-center gap-1 px-3 py-1.5 text-xs font-mono rounded-lg bg-[#0d1322] border border-slate-700 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all"
+              title="Download Samuel's One-Page CV (PDF)"
+            >
+              <FileText className="w-3.5 h-3.5 text-cyan-400" />
+              <span>CV</span>
+            </a>
+
             {/* Terminal Button */}
             <button
               onClick={onOpenTerminal}
@@ -92,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
             {/* Quick Contact CTA */}
             <a
               href="#contact"
-              className="flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-[#070b14] hover:from-cyan-400 hover:to-blue-500 shadow-sm hover:shadow-glow-cyan transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-[#070b14] hover:from-cyan-400 hover:to-blue-500 shadow-sm hover:shadow-glow-cyan transition-all font-mono"
             >
               <span>Get in Touch</span>
             </a>

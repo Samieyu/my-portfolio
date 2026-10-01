@@ -44,7 +44,7 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ isOpen
 
   if (!isOpen) return null;
 
-  const quickCommands = ['help', 'whoami', 'skills', 'projects', 'certs', 'nmap localhost', 'contact', 'clear'];
+  const quickCommands = ['help', 'whoami', 'skills', 'projects', 'certs', 'cv', 'nmap localhost', 'contact', 'clear'];
 
   const executeCommand = (cmd: string) => {
     const trimmed = cmd.trim().toLowerCase();
@@ -60,6 +60,7 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ isOpen
               <div><span className="text-cyan-300 font-bold">skills</span> — Technical, Cyber & Dev Stack</div>
               <div><span className="text-cyan-300 font-bold">projects</span> — Active Software & Security Works</div>
               <div><span className="text-cyan-300 font-bold">certs</span> — 10 Verified Credentials + INSA</div>
+              <div><span className="text-cyan-300 font-bold">cv</span> — View & Download One-Page CV</div>
               <div><span className="text-cyan-300 font-bold">nmap localhost</span> — Simulated Port & Service Scan</div>
               <div><span className="text-cyan-300 font-bold">cat goals.txt</span> — Professional Vision & Ambitions</div>
               <div><span className="text-cyan-300 font-bold">contact</span> — Reach Samuel directly</div>
@@ -195,6 +196,34 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ isOpen
             <p>Telegram: <a href={personalInfo.telegram} target="_blank" rel="noreferrer" className="text-cyan-300 hover:underline">{personalInfo.telegramHandle}</a></p>
             <p>LinkedIn: <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-cyan-300 hover:underline">samuel-woldemeskel-956727354</a></p>
             <p>GitHub: <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-cyan-300 hover:underline">github.com/Samieyu</a></p>
+          </div>
+        );
+        break;
+
+      case 'cv':
+      case 'resume':
+      case 'cat cv.txt':
+        response = (
+          <div className="space-y-1.5 text-xs text-slate-300">
+            <p className="text-cyan-400 font-bold">[Curriculum Vitae / Resume]:</p>
+            <p className="text-slate-300">Samuel Woldemeskel Wolde — 4th-Year Software Engineering (Wachemo Univ) & INSA Cyber Talent Alum.</p>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href={personalInfo.cvPath}
+                download="Samuel_Woldemeskel_CV.pdf"
+                className="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30"
+              >
+                [Download PDF CV]
+              </a>
+              <a
+                href={personalInfo.cvGoogleDocsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="px-2.5 py-1 rounded bg-slate-800 text-slate-200 border border-slate-700 hover:text-cyan-300"
+              >
+                [Open Google Docs Live]
+              </a>
+            </div>
           </div>
         );
         break;
