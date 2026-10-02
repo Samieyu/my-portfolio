@@ -92,40 +92,82 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
 
           </div>
 
-          {/* Right Column: Samuel's Enhanced HD Cutout Portrait */}
+          {/* Right Column: Samuel's Enhanced HD Cutout Portrait with Very Attractive Background */}
           <div className="lg:col-span-5 flex justify-center relative">
-            <div className="relative w-full max-w-[440px] sm:max-w-[460px] lg:max-w-[480px] aspect-[4/5] flex items-end justify-center">
+            <div className="relative w-full max-w-[460px] sm:max-w-[490px] lg:max-w-[510px] aspect-[4/5] flex items-end justify-center select-none">
               
-              {/* Soft Studio Circular Backdrop (matching Aaron Mitchell circular halo) */}
-              <div className="absolute inset-2 sm:inset-4 rounded-full bg-gradient-to-b from-[#e7ebe2] via-[#dde2d7] to-[#d2d8cb] opacity-95 scale-95 shadow-inner" />
+              {/* 1. Ambient Radial Glow Aura (multi-layered warm & sage light) */}
+              <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[340px] sm:w-[400px] h-[340px] sm:h-[400px] rounded-full bg-gradient-to-tr from-[#556453]/25 via-[#9cb098]/20 to-[#e2dad0]/30 blur-2xl pointer-events-none" />
 
-              {/* Technical Blueprint & Coordinate Watermark */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none select-none">
-                <svg width="360" height="360" viewBox="0 0 200 200" fill="none" className="text-[#556453]">
-                  <circle cx="100" cy="100" r="92" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3"/>
-                  <circle cx="100" cy="100" r="74" stroke="currentColor" strokeWidth="0.5"/>
-                  <circle cx="100" cy="100" r="54" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 3"/>
-                  <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
-                  <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
-                  {/* Subtle Tech Coordinates */}
-                  <text x="135" y="28" fontSize="5.5" fontFamily="monospace" fill="currentColor">+ ETH-SEC // 2026</text>
-                  <text x="18" y="175" fontSize="5.5" fontFamily="monospace" fill="currentColor">+ INSA-TALENT-B5</text>
-                  <text x="135" y="175" fontSize="5.5" fontFamily="monospace" fill="currentColor">+ 4TH-YEAR-SE</text>
+              {/* 2. Soft Studio Circular Halo with Glassmorphic Rim */}
+              <div className="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[310px] sm:w-[370px] lg:w-[400px] h-[310px] sm:h-[370px] lg:h-[400px] rounded-full bg-gradient-to-b from-[#f2f5ee] via-[#e6ebdf] to-[#d6dcce] border border-[#d2d8cb] shadow-[0_20px_50px_rgba(85,100,83,0.12)] overflow-hidden">
+                {/* Subtle internal concentric rings */}
+                <div className="absolute inset-4 rounded-full border border-[#cbd3c3]/60" />
+                <div className="absolute inset-10 rounded-full border border-dashed border-[#b8c3af]/50" />
+                <div className="absolute inset-20 rounded-full bg-gradient-to-tr from-white/40 to-transparent" />
+              </div>
+
+              {/* 3. Futuristic Holographic Cyber Reticle & Constellation Watermark */}
+              <div className="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[310px] sm:w-[370px] lg:w-[400px] h-[310px] sm:h-[370px] lg:h-[400px] flex items-center justify-center opacity-35 pointer-events-none">
+                <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" className="text-[#455243]">
+                  {/* Outer Tech Degree Ring */}
+                  <circle cx="200" cy="200" r="185" stroke="currentColor" strokeWidth="1" strokeDasharray="3 6" />
+                  <circle cx="200" cy="200" r="165" stroke="currentColor" strokeWidth="0.75" />
+                  <circle cx="200" cy="200" r="145" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" />
+                  <circle cx="200" cy="200" r="115" stroke="currentColor" strokeWidth="0.75" />
+                  
+                  {/* Axis Crosshairs */}
+                  <line x1="15" y1="200" x2="385" y2="200" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 4" />
+                  <line x1="200" y1="15" x2="200" y2="385" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 4" />
+
+                  {/* Dynamic Corner Crosses */}
+                  <path d="M70 70 L80 70 M75 65 L75 75" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M330 70 L320 70 M325 65 L325 75" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M70 330 L80 330 M75 325 L75 335" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M330 330 L320 330 M325 325 L325 335" stroke="currentColor" strokeWidth="1.2" />
+
+                  {/* Technical Coordinates and Engineering Badges */}
+                  <text x="270" y="55" fontSize="8.5" fontFamily="monospace" fontWeight="600" fill="currentColor">ETH // INSA-B5</text>
+                  <text x="35" y="190" fontSize="8" fontFamily="monospace" fill="currentColor">SEC.TLS: 1.3</text>
+                  <text x="35" y="340" fontSize="8.5" fontFamily="monospace" fontWeight="600" fill="currentColor">4TH-YEAR-SE</text>
+                  <text x="260" y="340" fontSize="8" fontFamily="monospace" fill="currentColor">WACHEMO.UNIV</text>
                 </svg>
               </div>
 
-              {/* Samuel's Enhanced Studio Cutout (1152x2048 HD resolution, bold contrast & rich golden embroidery) */}
+              {/* 4. Floating Tech Badge 1 (Top-Right): INSA Cyber Talent */}
+              <div className="absolute top-10 -right-2 sm:right-2 z-20 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-[#d2d8cb] shadow-elevated flex items-center gap-2 animate-bounce duration-1000 hidden sm:flex">
+                <div className="w-5 h-5 rounded-full bg-[#556453] text-white flex items-center justify-center text-[10px]">
+                  🛡️
+                </div>
+                <div className="text-left font-mono">
+                  <div className="text-[10px] font-bold text-[#1a1d1a]">INSA Cyber Talent</div>
+                  <div className="text-[9px] text-[#556453]">5th Batch Alum</div>
+                </div>
+              </div>
+
+              {/* 5. Floating Tech Badge 2 (Mid-Left): Software & Mobile */}
+              <div className="absolute top-36 -left-3 sm:left-1 z-20 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-[#d2d8cb] shadow-elevated flex items-center gap-2 hidden sm:flex">
+                <div className="w-5 h-5 rounded-full bg-[#3d473a] text-white flex items-center justify-center text-[10px]">
+                  ⚡
+                </div>
+                <div className="text-left font-mono">
+                  <div className="text-[10px] font-bold text-[#1a1d1a]">Full-Stack & Mobile</div>
+                  <div className="text-[9px] text-[#556453]">React • Flutter • Py</div>
+                </div>
+              </div>
+
+              {/* 6. Samuel's Studio Cutout (1152x2048 HD resolution, bold contrast & rich golden embroidery) */}
               <img
                 src={personalInfo.profileImage}
                 alt={personalInfo.name}
-                className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_16px_28px_rgba(26,30,25,0.18)] hover:scale-[1.02] transition-transform duration-500"
+                className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_20px_35px_rgba(26,30,25,0.22)] hover:scale-[1.02] transition-transform duration-500"
                 loading="eager"
               />
 
-              {/* Floating Status Pill */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#d8dcd3] shadow-elevated flex items-center gap-2 text-xs font-mono text-[#384334] whitespace-nowrap">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Open for Cybersecurity & Dev Roles</span>
+              {/* 7. Bottom Floating Glass Status Pill */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#ccd3c5] shadow-elevated flex items-center gap-2.5 text-xs font-mono text-[#323d30] whitespace-nowrap">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-semibold tracking-wide">Available for Internships & Projects</span>
               </div>
 
             </div>
