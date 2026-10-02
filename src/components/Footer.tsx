@@ -1,116 +1,142 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, Clock, Heart, Terminal, ArrowUp, Github, Linkedin, Mail, Send } from 'lucide-react';
+import React from 'react';
+import { ArrowUp, Github, Linkedin, Mail, Send, FileText, ExternalLink } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
-  const [currentTime, setCurrentTime] = useState<string>('');
-
-  useEffect(() => {
-    const updateTime = () => {
-      // Ethiopia is UTC+3 (East Africa Time)
-      const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Africa/Addis_Ababa',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-      };
-      const formatter = new Intl.DateTimeFormat([], options);
-      setCurrentTime(formatter.format(new Date()));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="relative bg-[#050810] border-t border-slate-800/80 text-slate-400 font-mono text-xs py-12">
+    <footer className="bg-[#f9f9f7] border-t border-[#e5e8e0] pt-16 pb-12 text-[#5a6656] text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800/80">
+        {/* Top 4-Column Grid matching reference design */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#e5e8e0]">
           
-          {/* Col 1: Identity */}
-          <div className="space-y-3 md:col-span-2">
-            <div className="flex items-center gap-2 text-white font-bold text-sm">
-              <Shield className="w-4 h-4 text-cyan-400" />
-              <span>Samuel Woldemeskel</span>
+          {/* Col 1: Brand & Bio */}
+          <div className="md:col-span-4 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg border border-[#3f4a3c] bg-white">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#3c4738]">
+                  <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="currentColor" strokeWidth="1.75"/>
+                  <path d="M12 6L16 9.5V14.5L12 18L8 14.5V9.5L12 6Z" fill="#556453" fillOpacity="0.2"/>
+                </svg>
+              </div>
+              <div>
+                <span className="font-sans font-bold text-xs tracking-[0.2em] text-[#1c1f1b] uppercase block">
+                  Samuel Woldemeskel
+                </span>
+                <span className="text-[10px] tracking-[0.15em] text-[#717e6e] uppercase font-medium">
+                  Software Engineer & Cybersecurity
+                </span>
+              </div>
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed max-w-md font-sans">
-              4th-year Software Engineering student at Wachemo University. Dedicated to secure software engineering, penetration testing, defensive SOC architectures, and creative digital media.
+
+            <p className="text-xs text-[#626e5e] leading-relaxed max-w-sm">
+              4th-year Software Engineering student at Wachemo University & INSA Cyber Talent Alum. Building resilient, intelligent, and secure software solutions.
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-cyan-400" aria-label="GitHub">
-                <Github className="w-4 h-4" />
-              </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-cyan-400" aria-label="LinkedIn">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href={`mailto:${personalInfo.email}`} className="text-slate-400 hover:text-cyan-400" aria-label="Email">
-                <Mail className="w-4 h-4" />
-              </a>
-              <a href={personalInfo.telegram} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-cyan-400" aria-label="Telegram">
-                <Send className="w-4 h-4" />
-              </a>
-            </div>
           </div>
 
-          {/* Col 2: Quick Links */}
-          <div className="space-y-2">
-            <span className="text-white font-bold text-xs uppercase tracking-wider block">
+          {/* Col 2: Navigation */}
+          <div className="md:col-span-2 space-y-3">
+            <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#1c1f1b] uppercase block">
               Navigation
             </span>
-            <ul className="space-y-1.5 text-[11px]">
-              <li><a href="#about" className="hover:text-cyan-400 transition-colors">About & Education</a></li>
-              <li><a href="#cybersecurity" className="hover:text-cyan-400 transition-colors">Cybersecurity Track</a></li>
-              <li><a href="#skills" className="hover:text-cyan-400 transition-colors">Technical Skills</a></li>
-              <li><a href="#projects" className="hover:text-cyan-400 transition-colors">Projects & Repos</a></li>
-              <li><a href="#certifications" className="hover:text-cyan-400 transition-colors">10 Verified Certs</a></li>
-              <li><a href="#creative" className="hover:text-cyan-400 transition-colors">Music & Design</a></li>
+            <ul className="space-y-2 text-xs">
+              <li><a href="#" className="hover:text-[#1c1f1b] transition-colors">Home</a></li>
+              <li><a href="#about" className="hover:text-[#1c1f1b] transition-colors">About</a></li>
+              <li><a href="#work" className="hover:text-[#1c1f1b] transition-colors">Work</a></li>
+              <li><a href="#services" className="hover:text-[#1c1f1b] transition-colors">Services</a></li>
+              <li><a href="#process" className="hover:text-[#1c1f1b] transition-colors">Process</a></li>
+              <li><a href="#credentials" className="hover:text-[#1c1f1b] transition-colors">Credentials</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Status & Time */}
-          <div className="space-y-3">
-            <span className="text-white font-bold text-xs uppercase tracking-wider block">
-              System Telemetry
+          {/* Col 3: Resources & CV */}
+          <div className="md:col-span-3 space-y-3">
+            <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#1c1f1b] uppercase block">
+              Curriculum Vitae
             </span>
-            <div className="p-3 rounded-xl bg-[#0a101d] border border-slate-800 space-y-2 text-[11px]">
-              <div className="flex items-center gap-1.5 text-emerald-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Status: Seeking Internships</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-slate-300">
-                <Clock className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Addis Ababa: {currentTime || 'Loading...'} (EAT)</span>
-              </div>
-              <div className="text-[10px] text-slate-500">
-                Wachemo University • INSA Camp Alum
-              </div>
-            </div>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a
+                  href={personalInfo.cvPath}
+                  download="Samuel_Woldemeskel_CV.pdf"
+                  className="flex items-center gap-1.5 hover:text-[#1c1f1b] transition-colors"
+                >
+                  <FileText className="w-3.5 h-3.5 text-[#556453]" />
+                  <span>Download 1-Page CV (PDF)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personalInfo.cvGoogleDocsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 hover:text-[#1c1f1b] transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5 text-[#556453]" />
+                  <span>View in Google Docs</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personalInfo.creativePortfolioUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[#1c1f1b] transition-colors"
+                >
+                  Graphic Portfolio (Netlify)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Follow */}
+          <div className="md:col-span-3 space-y-3">
+            <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#1c1f1b] uppercase block">
+              Connect
+            </span>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href={personalInfo.github} target="_blank" rel="noreferrer" className="hover:text-[#1c1f1b] transition-colors">
+                  GitHub: @Samieyu
+                </a>
+              </li>
+              <li>
+                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="hover:text-[#1c1f1b] transition-colors">
+                  LinkedIn: Samuel Woldemeskel
+                </a>
+              </li>
+              <li>
+                <a href={personalInfo.telegram} target="_blank" rel="noreferrer" className="hover:text-[#1c1f1b] transition-colors">
+                  Telegram: @sameEyuW
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${personalInfo.email}`} className="hover:text-[#1c1f1b] transition-colors">
+                  {personalInfo.email}
+                </a>
+              </li>
+            </ul>
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        {/* Bottom Sub-bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7b8778]">
           <div>
             &copy; {new Date().getFullYear()} Samuel Woldemeskel. All rights reserved.
           </div>
 
-          <div className="flex items-center gap-2">
-            <span>Built with React, TypeScript & Tailwind CSS</span>
-            <span>•</span>
+          <div className="flex items-center gap-4">
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-1 text-cyan-400 hover:text-cyan-300 transition-colors"
+              className="flex items-center gap-1.5 text-[#556453] hover:text-[#1c1f1b] font-medium transition-colors"
             >
               <span>Back to Top</span>
-              <ArrowUp className="w-3 h-3" />
+              <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
-import { CybersecuritySection } from './components/CybersecuritySection';
-import { SkillsSection } from './components/SkillsSection';
 import { ProjectsSection } from './components/ProjectsSection';
+import { ServicesSection } from './components/ServicesSection';
+import { StatsBanner } from './components/StatsBanner';
+import { AboutSection } from './components/AboutSection';
+import { ProcessSection } from './components/ProcessSection';
 import { CertificatesSection } from './components/CertificatesSection';
-import { ExperienceTimeline } from './components/ExperienceTimeline';
-import { CreativeSection } from './components/CreativeSection';
-import { CareerGoalsSection } from './components/CareerGoalsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
@@ -16,7 +14,7 @@ import { InteractiveTerminal } from './components/InteractiveTerminal';
 export function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
-  // Global hotkey: Pressing ` (backtick) or Ctrl + K opens terminal
+  // Global hotkey: Pressing Ctrl + K or Cmd + K opens terminal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -29,22 +27,35 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#070b14] text-slate-100 relative selection:bg-cyan-500/20 selection:text-cyan-300">
+    <div className="min-h-screen bg-[#f9f9f7] text-[#1a1d1a] font-sans relative selection:bg-[#556453]/20 selection:text-[#2d372c]">
       
-      {/* Navigation */}
+      {/* Editorial Navigation */}
       <Navbar onOpenTerminal={() => setIsTerminalOpen(true)} />
 
-      {/* Main Content Sections */}
+      {/* Main Flow following the Aaron Mitchell design structure */}
       <main>
+        {/* 1. Hero with Samuel's cutout portrait */}
         <Hero onOpenTerminal={() => setIsTerminalOpen(true)} />
-        <AboutSection />
-        <CybersecuritySection />
-        <SkillsSection />
+
+        {/* 2. Selected Work / Featured Projects */}
         <ProjectsSection />
+
+        {/* 3. What I Do / Services */}
+        <ServicesSection />
+
+        {/* 4. Statistics Strip */}
+        <StatsBanner />
+
+        {/* 5. About Me & Academic Identity */}
+        <AboutSection />
+
+        {/* 6. My Process: Discover -> Architect -> Develop -> Deploy */}
+        <ProcessSection />
+
+        {/* 7. Verified Credentials (10+ Coursera & INSA) */}
         <CertificatesSection />
-        <ExperienceTimeline />
-        <CreativeSection />
-        <CareerGoalsSection />
+
+        {/* 8. Bottom Contact Banner */}
         <ContactSection />
       </main>
 

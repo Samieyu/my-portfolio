@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Terminal, ArrowRight, Github, Linkedin, Mail, Send, Award, Lock, Code, Cpu, ExternalLink, MapPin } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ShieldCheck, Terminal, Download, Sparkles } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 interface HeroProps {
@@ -8,194 +8,124 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-cyber-grid">
-      {/* Radial ambient glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative pt-32 pb-20 lg:pt-36 lg:pb-28 overflow-hidden bg-[#f9f9f7]">
+      
+      {/* Subtle background technical markings */}
+      <div className="absolute top-24 left-10 text-[10px] font-mono tracking-widest text-[#a8b1a3] uppercase select-none hidden lg:block">
+        [ 09.04.14 // ETH ]
+      </div>
+      <div className="absolute top-28 right-16 text-[10px] font-mono tracking-widest text-[#a8b1a3] uppercase select-none hidden lg:block">
+        AI + SECURITY<br />HUMAN + IMPACT
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Text & Badges */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Left Column: Typography & CTAs */}
+          <div className="lg:col-span-7 space-y-7 text-left">
             
-            {/* Status Pills */}
-            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                4th-Year Software Engineering • Wachemo Univ
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-[#0d1424] text-slate-300 border border-slate-700">
-                <Shield className="w-3.5 h-3.5 text-cyan-400" />
-                INSA Cyber Talent Alum (5th Batch)
+            {/* Overline with vertical indicator line */}
+            <div className="flex items-center gap-3">
+              <span className="w-6 h-[1.5px] bg-[#556453]" />
+              <span className="text-[11px] font-sans font-semibold tracking-[0.22em] text-[#556453] uppercase">
+                Software Engineering & Cybersecurity
               </span>
             </div>
 
-            {/* Main Headline */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 text-glow-cyan">{personalInfo.name}</span>
-              </h1>
-              <p className="text-lg sm:text-xl font-medium text-cyan-200/90 font-mono">
-                {personalInfo.headline}
-              </p>
-            </div>
+            {/* Editorial Serif Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-serif font-normal text-[#1a1d1a] leading-[1.12] tracking-tight">
+              I build secure digital experiences that are{' '}
+              <span className="italic font-serif font-normal text-[#384334]">
+                intuitive, intelligent
+              </span>{' '}
+              and impactful.
+            </h1>
 
-            {/* Concise Teaser */}
-            <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Software Engineering student at <strong className="text-white">Wachemo University</strong> & <strong className="text-cyan-300">INSA Cyber Talent Alum</strong>. Building secure software, mobile applications, and defensive/offensive security labs.
+            {/* Sub-paragraph */}
+            <p className="text-[#555d51] text-base sm:text-lg max-w-xl leading-relaxed font-sans font-normal">
+              I'm <strong className="text-[#1a1d1a] font-semibold">{personalInfo.name}</strong>, a Software Engineering student at <strong className="text-[#1a1d1a]">Wachemo University</strong> & <strong className="text-[#556453]">INSA Cyber Talent Alum</strong> crafting secure, resilient web systems and security architectures.
             </p>
 
-            {/* Core Competency Tags */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
-              {['External / Internal PenTesting', 'Web Application Security', 'MERN & Full-Stack', 'Flutter / Dart', 'Neon PostgreSQL', 'Wazuh & SOC Monitoring'].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2.5 py-1 text-xs font-mono rounded-md bg-[#0f172a] text-slate-300 border border-slate-800 hover:border-cyan-500/40 transition-colors"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
+            {/* Primary & Secondary Action Buttons (matching reference) */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
-                href="#projects"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-[#070b14] hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40 transition-all font-mono"
+                href="#work"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-wider text-white bg-[#556453] hover:bg-[#465444] rounded-lg transition-all shadow-sm hover:shadow-sage"
               >
-                <span>Explore My Projects</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>VIEW MY WORK</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
 
               <a
-                href="#cybersecurity"
-                className="flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold bg-[#0d1322] text-slate-200 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all font-mono"
+                href="#contact"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-wider text-[#2d362b] bg-white border border-[#d8dcd3] hover:border-[#556453] rounded-lg transition-all shadow-sm hover:bg-[#fafbf9]"
               >
-                <Lock className="w-4 h-4 text-cyan-400" />
-                <span>Cybersecurity Track</span>
+                <span>LET'S WORK TOGETHER</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
 
-              <button
-                onClick={onOpenTerminal}
-                className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-mono bg-[#0a101d] text-cyan-300 border border-slate-700 hover:border-cyan-400 hover:bg-cyan-950/40 transition-all"
-                title="Launch Interactive Terminal"
+              <a
+                href={personalInfo.cvPath}
+                download="Samuel_Woldemeskel_CV.pdf"
+                className="inline-flex items-center gap-1.5 px-4 py-3.5 text-xs font-mono text-[#556453] hover:text-[#1c1f1b] transition-colors"
+                title="Download One-Page CV"
               >
-                <Terminal className="w-4 h-4 text-cyan-400 animate-pulse" />
-                <span>&gt;_ Interactive Shell</span>
-              </button>
+                <Download className="w-3.5 h-3.5" />
+                <span>1-Page CV</span>
+              </a>
             </div>
 
-            {/* Social Links & Location Bar */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-sm text-slate-400 font-mono">
-              <div className="flex items-center gap-3">
-                <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2 rounded-lg bg-[#0d1322] border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
-                  aria-label="GitHub Profile"
-                  title="GitHub: Samieyu"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2 rounded-lg bg-[#0d1322] border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
-                  aria-label="LinkedIn Profile"
-                  title="LinkedIn: Samuel Woldemeskel"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="p-2 rounded-lg bg-[#0d1322] border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
-                  aria-label="Email Samuel"
-                  title={`Email: ${personalInfo.email}`}
-                >
-                  <Mail className="w-4 h-4" />
-                </a>
-                <a
-                  href={personalInfo.telegram}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2 rounded-lg bg-[#0d1322] border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
-                  aria-label="Telegram"
-                  title="Telegram: @sameEyuW"
-                >
-                  <Send className="w-4 h-4" />
-                </a>
+            {/* Micro details bar */}
+            <div className="pt-4 flex flex-wrap items-center gap-4 text-xs font-mono text-[#747e70]">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#556453]" />
+                <span>Wachemo Univ (4th Year)</span>
               </div>
-
-              <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{personalInfo.location}</span>
+              <span>•</span>
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#556453]" />
+                <span>INSA 5th Batch Alum</span>
               </div>
+              <span>•</span>
+              <span>10+ Verified Certifications</span>
             </div>
+
           </div>
 
-          {/* Right Column: Visual Portrait & Cyber Frame */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-sm sm:max-w-md">
+          {/* Right Column: Samuel's Cutout Image with Circular Background Frame & Tech Overlay */}
+          <div className="lg:col-span-5 flex justify-center relative">
+            <div className="relative w-full max-w-[420px] aspect-[4/5] flex items-end justify-center">
               
-              {/* Outer Glowing Cyber Ring */}
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 rounded-2xl blur-lg opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse" />
+              {/* Neutral Circular / Soft Backdrop (matching the Aaron Mitchell circular frame) */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#e8ece4] to-[#dde2d8] opacity-90 scale-95" />
 
-              {/* Main Card Frame */}
-              <div className="relative rounded-2xl bg-[#090d16] border border-cyan-500/30 overflow-hidden shadow-2xl p-3 sm:p-4">
-                
-                {/* Image Container */}
-                <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-slate-900 border border-slate-800">
-                  <img
-                    src={personalInfo.profileImage}
-                    alt={personalInfo.name}
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-                    loading="eager"
-                  />
-                  
-                  {/* Subtle Scanline Overlay */}
-                  <div className="absolute inset-0 scanline pointer-events-none opacity-20" />
-                  
-                  {/* Bottom Vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-90" />
-
-                  {/* On-Image Status Pill */}
-                  <div className="absolute bottom-4 left-4 right-4 space-y-1">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-cyan-500/30 text-[11px] font-mono text-cyan-300">
-                      <Cpu className="w-3 h-3 text-cyan-400" />
-                      <span>Security & Full-Stack Rigor</span>
-                    </div>
-                    <p className="text-white text-sm font-semibold tracking-wide">
-                      {personalInfo.fullName}
-                    </p>
-                    <p className="text-xs text-slate-300">
-                      Wachemo University • 4th Year
-                    </p>
-                  </div>
-                </div>
-
-                {/* Floating Metrics beneath image */}
-                <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-slate-800/80 font-mono text-xs">
-                  <div className="p-2 rounded-lg bg-[#0d1424] border border-slate-800 flex items-center gap-2">
-                    <Award className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <div>
-                      <div className="text-white font-bold text-xs">10+ Verified</div>
-                      <div className="text-[10px] text-slate-400">Meta • IBM • UofA</div>
-                    </div>
-                  </div>
-
-                  <div className="p-2 rounded-lg bg-[#0d1424] border border-slate-800 flex items-center gap-2">
-                    <Code className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <div>
-                      <div className="text-white font-bold text-xs">Full-Stack & Apps</div>
-                      <div className="text-[10px] text-slate-400">React • Flutter • MERN</div>
-                    </div>
-                  </div>
-                </div>
-
+              {/* Subtle Tech / Cyber Watermark Graphic behind Samuel */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-25 pointer-events-none select-none">
+                <svg width="340" height="340" viewBox="0 0 200 200" fill="none" className="text-[#556453]">
+                  <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 3"/>
+                  <circle cx="100" cy="100" r="70" stroke="currentColor" strokeWidth="0.5"/>
+                  <line x1="10" y1="100" x2="190" y2="100" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
+                  <line x1="100" y1="10" x2="100" y2="190" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
+                  {/* Subtle Tech Coordinates */}
+                  <text x="140" y="30" fontSize="6" fontFamily="monospace" fill="currentColor">+ ETH-SEC</text>
+                  <text x="20" y="170" fontSize="6" fontFamily="monospace" fill="currentColor">+ LAT-08.9</text>
+                </svg>
               </div>
+
+              {/* Samuel's Cutout Portrait (The 2nd user uploaded image!) */}
+              <img
+                src={personalInfo.profileImage}
+                alt={personalInfo.name}
+                className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-md"
+                loading="eager"
+              />
+
+              {/* Floating Status Pill */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-[#d8dcd3] shadow-soft flex items-center gap-2 text-xs font-mono text-[#384334]">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Open for Cybersecurity & Dev Roles</span>
+              </div>
+
             </div>
           </div>
 

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Shield, Terminal, Menu, X, FileText } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Terminal, Menu, X, ArrowUpRight, Shield } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -19,93 +19,77 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Cybersecurity', href: '#cybersecurity' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Timeline', href: '#timeline' },
-    { name: 'Creative', href: '#creative' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'HOME', href: '#' },
+    { name: 'ABOUT', href: '#about' },
+    { name: 'WORK', href: '#work' },
+    { name: 'SERVICES', href: '#services' },
+    { name: 'PROCESS', href: '#process' },
+    { name: 'CREDENTIALS', href: '#credentials' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
-    <nav
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#070b14]/90 backdrop-blur-md border-b border-cyan-500/20 py-3 shadow-lg shadow-black/40'
+          ? 'bg-[#f9f9f7]/90 backdrop-blur-md border-b border-[#e5e7e0] py-3.5 shadow-sm'
           : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#"
-            className="flex items-center gap-3 group focus:outline-none"
-            aria-label="Samuel Woldemeskel Home"
-          >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-500/40 group-hover:border-cyan-400 group-hover:shadow-glow-cyan transition-all">
-              <Shield className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
-              <span className="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#070b14] animate-pulse" />
+          
+          {/* Logo matching the reference brand mark */}
+          <a href="#" className="flex items-center gap-3 group focus:outline-none">
+            <div className="flex items-center justify-center w-9 h-9 rounded-lg border border-[#3f4a3c] bg-white group-hover:border-[#556453] transition-colors shadow-sm">
+              {/* Geometric Hexagon/Shield Logo */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-[#3c4738]">
+                <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 6L16 9.5V14.5L12 18L8 14.5V9.5L12 6Z" fill="#556453" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.25"/>
+              </svg>
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-slate-100 tracking-wide font-mono text-sm sm:text-base group-hover:text-cyan-400 transition-colors">
-                  samuel.woldemeskel
-                </span>
-                <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/30">
-                  SE.student
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 font-mono hidden md:block">
-                Wachemo Univ • INSA Alum
-              </p>
+            <div className="flex flex-col">
+              <span className="font-sans font-bold text-xs tracking-[0.2em] text-[#1c1f1b] uppercase">
+                Samuel Woldemeskel
+              </span>
+              <span className="text-[10px] tracking-[0.16em] text-[#6b7568] uppercase font-medium">
+                Software Engineer & Cybersecurity
+              </span>
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+          {/* Center Nav Links */}
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-1.5 text-xs xl:text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/10 rounded-md transition-all font-mono"
+                className="text-xs font-medium tracking-[0.15em] text-[#4d564a] hover:text-[#1c1f1b] transition-colors relative py-1"
               >
                 {link.name}
               </a>
             ))}
-          </div>
+          </nav>
 
-          {/* Right Action Buttons */}
+          {/* Right Action: Let's Talk CTA & Terminal */}
           <div className="hidden sm:flex items-center gap-2.5">
-            {/* CV Download / View */}
-            <a
-              href={personalInfo.cvPath}
-              download="Samuel_Woldemeskel_CV.pdf"
-              className="flex items-center gap-1 px-3 py-1.5 text-xs font-mono rounded-lg bg-[#0d1322] border border-slate-700 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all"
-              title="Download Samuel's One-Page CV (PDF)"
-            >
-              <FileText className="w-3.5 h-3.5 text-cyan-400" />
-              <span>CV</span>
-            </a>
-
-            {/* Terminal Button */}
+            {/* Interactive Terminal Trigger */}
             <button
               onClick={onOpenTerminal}
-              className="flex items-center gap-2 px-3 py-1.5 text-xs font-mono rounded-lg bg-[#0d1322] border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400 hover:shadow-glow-cyan transition-all"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-mono text-[#4a5547] hover:text-[#1c1f1b] border border-[#d8dcd3] bg-white rounded-lg hover:border-[#556453] transition-all"
               title="Open Interactive Cyber Shell"
             >
-              <Terminal className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+              <Terminal className="w-3.5 h-3.5 text-[#556453]" />
               <span>&gt;_ CLI</span>
             </button>
 
-            {/* Quick Contact CTA */}
+            {/* Let's Talk Button (matching the reference button) */}
             <a
               href="#contact"
-              className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-[#070b14] hover:from-cyan-400 hover:to-blue-500 shadow-sm hover:shadow-glow-cyan transition-all font-mono"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-wider text-white bg-[#556453] hover:bg-[#465444] rounded-lg transition-all shadow-sm hover:shadow-sage"
             >
-              <span>Get in Touch</span>
+              <span>LET'S TALK</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
@@ -113,59 +97,50 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={onOpenTerminal}
-              className="p-2 rounded-lg bg-[#0d1322] border border-cyan-500/30 text-cyan-400"
+              className="p-2 rounded-lg border border-[#d8dcd3] bg-white text-[#4a5547]"
               aria-label="Open CLI"
             >
               <Terminal className="w-4 h-4" />
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#0d1322] border border-slate-700 text-slate-300 hover:text-cyan-400"
-              aria-label="Toggle Navigation Menu"
+              className="p-2 rounded-lg border border-[#d8dcd3] bg-white text-[#4a5547]"
+              aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
+
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[#070b14]/95 border-b border-cyan-500/20 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 mt-3 animate-in slide-in-from-top duration-200">
-          <div className="grid grid-cols-2 gap-2 pt-2 pb-3 border-b border-slate-800">
+        <div className="lg:hidden bg-[#f9f9f7] border-b border-[#e5e7e0] px-4 py-4 space-y-3 mt-3 shadow-md animate-in slide-in-from-top duration-200">
+          <div className="flex flex-col space-y-2 pb-3 border-b border-[#e5e7e0]">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/10 rounded-md font-mono"
+                className="text-xs tracking-wider text-[#4a5547] hover:text-[#1c1f1b] font-medium py-1.5"
               >
                 {link.name}
               </a>
             ))}
           </div>
-
-          <div className="pt-2 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                onOpenTerminal();
-              }}
-              className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-mono rounded-lg bg-[#0d1322] border border-cyan-500/30 text-cyan-300"
-            >
-              <Terminal className="w-4 h-4 text-cyan-400" />
-              <span>Launch Cyber Terminal (&gt;_ CLI)</span>
-            </button>
+          <div className="flex flex-col gap-2 pt-1">
             <a
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center py-2.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-[#070b14]"
+              className="flex items-center justify-center gap-2 py-2.5 text-xs font-semibold tracking-wider text-white bg-[#556453] rounded-lg"
             >
-              Get in Touch
+              <span>LET'S TALK</span>
+              <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
