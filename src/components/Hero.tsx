@@ -92,36 +92,38 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
 
           </div>
 
-          {/* Right Column: Samuel's Cutout Image with Circular Background Frame & Tech Overlay */}
+          {/* Right Column: Samuel's Enhanced HD Cutout Portrait */}
           <div className="lg:col-span-5 flex justify-center relative">
-            <div className="relative w-full max-w-[420px] aspect-[4/5] flex items-end justify-center">
+            <div className="relative w-full max-w-[440px] sm:max-w-[460px] lg:max-w-[480px] aspect-[4/5] flex items-end justify-center">
               
-              {/* Neutral Circular / Soft Backdrop (matching the Aaron Mitchell circular frame) */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#e8ece4] to-[#dde2d8] opacity-90 scale-95" />
+              {/* Soft Studio Circular Backdrop (matching Aaron Mitchell circular halo) */}
+              <div className="absolute inset-2 sm:inset-4 rounded-full bg-gradient-to-b from-[#e7ebe2] via-[#dde2d7] to-[#d2d8cb] opacity-95 scale-95 shadow-inner" />
 
-              {/* Subtle Tech / Cyber Watermark Graphic behind Samuel */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-25 pointer-events-none select-none">
-                <svg width="340" height="340" viewBox="0 0 200 200" fill="none" className="text-[#556453]">
-                  <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 3"/>
-                  <circle cx="100" cy="100" r="70" stroke="currentColor" strokeWidth="0.5"/>
-                  <line x1="10" y1="100" x2="190" y2="100" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
-                  <line x1="100" y1="10" x2="100" y2="190" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
+              {/* Technical Blueprint & Coordinate Watermark */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none select-none">
+                <svg width="360" height="360" viewBox="0 0 200 200" fill="none" className="text-[#556453]">
+                  <circle cx="100" cy="100" r="92" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3"/>
+                  <circle cx="100" cy="100" r="74" stroke="currentColor" strokeWidth="0.5"/>
+                  <circle cx="100" cy="100" r="54" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 3"/>
+                  <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
+                  <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2"/>
                   {/* Subtle Tech Coordinates */}
-                  <text x="140" y="30" fontSize="6" fontFamily="monospace" fill="currentColor">+ ETH-SEC</text>
-                  <text x="20" y="170" fontSize="6" fontFamily="monospace" fill="currentColor">+ LAT-08.9</text>
+                  <text x="135" y="28" fontSize="5.5" fontFamily="monospace" fill="currentColor">+ ETH-SEC // 2026</text>
+                  <text x="18" y="175" fontSize="5.5" fontFamily="monospace" fill="currentColor">+ INSA-TALENT-B5</text>
+                  <text x="135" y="175" fontSize="5.5" fontFamily="monospace" fill="currentColor">+ 4TH-YEAR-SE</text>
                 </svg>
               </div>
 
-              {/* Samuel's Cutout Portrait (The 2nd user uploaded image!) */}
+              {/* Samuel's Enhanced Studio Cutout (1152x2048 HD resolution, bold contrast & rich golden embroidery) */}
               <img
                 src={personalInfo.profileImage}
                 alt={personalInfo.name}
-                className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-md"
+                className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_16px_28px_rgba(26,30,25,0.18)] hover:scale-[1.02] transition-transform duration-500"
                 loading="eager"
               />
 
               {/* Floating Status Pill */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-[#d8dcd3] shadow-soft flex items-center gap-2 text-xs font-mono text-[#384334]">
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#d8dcd3] shadow-elevated flex items-center gap-2 text-xs font-mono text-[#384334] whitespace-nowrap">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Open for Cybersecurity & Dev Roles</span>
               </div>
